@@ -1,0 +1,1445 @@
+{
+	"info": {
+		"_postman_id": "92df4182-e314-4184-b104-44fe1ea3cccc",
+		"name": "FFME2-13_App_user_should_be_able_to_Login_the_FFM_mobile_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"item": [
+				{
+					"name": "FFME2-13_App_user_should_be_able_to_Login_the_FFM_mobile_app",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad9d4674-e6d6-48c9-b34f-b8b94afa49d8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDM1OTc5MDEsImlhdCI6MTYwMjk5MzEwMSwic3ViIjoyNTksIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IkR1aGEgQyIsInBob25lX251bWJlciI6IjkxNzM0NzY5NjUiLCJtZW1iZXJfdHlwZSI6M30.1BNzOfI96fKzYTw6jzcywJWNX_eHH1gPr5NWH3L_wMI\",\r",
+									"            \"message\": \"Successfully logged in.\",\r",
+									"            \"status\": \"success\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"auth_token\",\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"auth_token\": {\r",
+									"            \"$id\": \"#/properties/auth_token\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The auth_token schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDM1OTc5MDEsImlhdCI6MTYwMjk5MzEwMSwic3ViIjoyNTksIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IkR1aGEgQyIsInBob25lX251bWJlciI6IjkxNzM0NzY5NjUiLCJtZW1iZXJfdHlwZSI6M30.1BNzOfI96fKzYTw6jzcywJWNX_eHH1gPr5NWH3L_wMI\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"Successfully logged in.\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"success\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should be able to login the FFM mobile app.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDM4NTA1NDMsImlhdCI6MTYwMzI0NTc0Mywic3ViIjoyNTksIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IkR1aGEgQyIsInBob25lX251bWJlciI6IjkxNzM0NzY5NjUiLCJtZW1iZXJfdHlwZSI6M30.TFCSkpy2Tedfs5t7eZJrAA1swTcFpmmqIgLXhzjQlZE\",\r\n    \"message\": \"Successfully logged in.\",\r\n  \r\n\r\nActual Result:\r\n{\r\n    \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDM4NTA1NDMsImlhdCI6MTYwMzI0NTc0Mywic3ViIjoyNTksIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IkR1aGEgQyIsInBob25lX251bWJlciI6IjkxNzM0NzY5NjUiLCJtZW1iZXJfdHlwZSI6M30.TFCSkpy2Tedfs5t7eZJrAA1swTcFpmmqIgLXhzjQlZE\",\r\n    \"message\": \"Successfully logged in.\",\r\n  \r\n\r\nStatus Code: 200 CREATED\r\nTest Result: Pass"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Negative",
+			"item": [
+				{
+					"name": "FFME2-13.1negativetest_AppuserloginwithoutphoneNumber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9935e5e9-ccf5-4f13-8730-b13dfd755105",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"phone_number must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"\r",
+									"\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.1negativetest_AppuserloginwithoutphoneNumber Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "420df5c6-66a3-498a-9580-f3e4500dd0ba",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"phone_number must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"\r",
+									"\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInLeavingRequiredFieldEmpty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f155d3bb-e063-48cd-9118-52ee5aa3b636",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"+\",\r\n\"iso_code\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without any required field.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"\",\r\n\"iso_code\": \"\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\",\r\n        \"phone_number must be non-empty\",\r\n        \"country_code must be non-empty\",\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\",\r\n        \"phone_number must be non-empty\",\r\n        \"country_code must be non-empty\",\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 forbidden\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithoutFirebaseID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "774f6065-25f0-4729-895f-e6ef5bb6dad6",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without any firebase_id.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutSecretText",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8cc48bb-2ad4-423b-891d-af77f846eb25",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without any secret_text field.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutPhone_Number_int",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d1045d81-f486-4347-aa1b-5cbc60065b8e",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without any phone_number_int.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"9173476965\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"\",\r\n\"iso_code\": \"US\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number_int must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"phone_number_int must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutPhoneNumber&IsoCode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "134c06ee-95c2-49f6-ba61-f88bed760ca8",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number & Iso Code.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"country_code must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"country_code must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutPhoneNumber&firebaseID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3e99db0-4ac3-476e-9760-91d626d183ad",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number & Firebase_id.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\",\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"firebase_id must be non-empty\",\r\n        \"phone_number must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutPhoneNumber&Secrettext",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20ac83d0-c379-4928-919c-b8b84dca7bcd",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number & SecretText.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"\",\r\n\"phone_number_int\": \"+8801701395491\",\r\n\"iso_code\": \"\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"secret_text must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				},
+				{
+					"name": "FFME2-13.2NegativeTestAppUserLogInWithhoutPhoneNumber&PhoneNumberInt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dea49fcb-3324-4e12-b4bb-35d2787a4e96",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"var schema =\r",
+									"{\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"title\": \"The root schema\",\r",
+									"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+									"    \"default\": {},\r",
+									"    \"examples\": [\r",
+									"        {\r",
+									"            \"message\": [\r",
+									"                \"firebase_id must be non-empty\",\r",
+									"                \"phone_number must be non-empty\",\r",
+									"                \"country_code must be non-empty\",\r",
+									"                \"secret_text must be non-empty\"\r",
+									"            ],\r",
+									"            \"status\": \"failed\"\r",
+									"        }\r",
+									"    ],\r",
+									"    \"required\": [\r",
+									"        \"message\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"message\": {\r",
+									"            \"$id\": \"#/properties/message\",\r",
+									"            \"type\": \"array\",\r",
+									"            \"title\": \"The message schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": [],\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"firebase_id must be non-empty\",\r",
+									"                    \"phone_number must be non-empty\"\r",
+									"                ]\r",
+									"            ],\r",
+									"            \"additionalItems\": true,\r",
+									"            \"items\": {\r",
+									"                \"$id\": \"#/properties/message/items\",\r",
+									"                \"anyOf\": [\r",
+									"                    {\r",
+									"                        \"$id\": \"#/properties/message/items/anyOf/0\",\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"title\": \"The first anyOf schema\",\r",
+									"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"examples\": [\r",
+									"                            \"firebase_id must be non-empty\",\r",
+									"                            \"phone_number must be non-empty\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                ]\r",
+									"            }\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"$id\": \"#/properties/status\",\r",
+									"            \"type\": \"string\",\r",
+									"            \"title\": \"The status schema\",\r",
+									"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+									"            \"default\": \"\",\r",
+									"            \"examples\": [\r",
+									"                \"failed\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"additionalProperties\": true\r",
+									"}\r",
+									"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"\",\r\n\"iso_code\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/field-force/auth/user-login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"user-login"
+							]
+						},
+						"description": "Objective:App user should not be able to login the FFM mobile app without phone number & phone_number_int.\r\nSE: Shiblu Ahmed\r\nPO: Pranto Majumder\r\nQA: Duha Chowdhury\r\nReviewer:Pranto Majumder\r\nTest Steps: Test steps includes the following payload as a json format in body\r\nMethod: POST\r\n{\r\n\"phone_number\": \"\",\r\n\"firebase_id\": \"firebase_ididid\",\r\n\"secret_text\": \"the_super_secret_text\",\r\n\"phone_number_int\": \"+\",\r\n\"iso_code\": \"\"\r\n}\r\nExpected Result:\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"phone_number_int must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nActual Result:\r\n \"status\": \"failed\"\r\n{\r\n    \"message\": [\r\n        \"phone_number must be non-empty\",\r\n        \"phone_number_int must be non-empty\"\r\n    ],\r\n    \"status\": \"failed\"\r\n}\r\n  \r\n\r\nStatus Code: 403 FORBIDDEN\r\nTest Result: Pass"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ed58a84a-e1ff-463f-a7ed-073a186e520e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "092f24a6-affb-4e12-b49e-ae20178525d3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
